@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <head renat="server">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>
+                    //for javaScript...
+                    //method for GetStudent Endpoint...
+            $(document).ready(function(){
+                $("#getAllTeachers").click(function (){
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost:37282/api/controllers/get-all-students',
+                        xhrFields:{
+                            withCredentials: true,
+                        },
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data, textStatus, xhr){
+                            console.log(data);
+                        },
+                        error: function(xhr, textStatus,errorThrown){
+                            console.log('Error in Operation');
+                        }
+                    });
+                });
+            });
+                // another method:
+//             $('#clickNow').click(allStudents);
+// //shorthand way to get data from the server using GET()
+//         function allStudents(){
+// //declare a local variable of url so we dont keep repeating the same url in the functions..
+//             var url = 'http://localhost:37282/api/controllers/get-all-students'
+//             $.get(url, output)
+//         }
+
+//         function output(data){
+//             console.log(data)
+// //to manage how the return valu displays, each() will iterate through
+// //each itme and give it a Key and Value display.
+//             $.each(data, function(k,v){
+//                 confirm.log(k)
+//                 console.log(v)
+//you  may want to get few data field from the data returned from the server..:
+// var html;
+//                 html = '<h3>Age '+v.(data field you want to put)+'</h3>'
+//             })
+//             $('#output').html('...')//to select just few details from the data requested.
+//         }
+        </script>
+    </head>
+    <body>
+        <input type="button" id="getAllTeachers" value="List Of Students">
+    </body>
+</head>
+</body>
+</html>

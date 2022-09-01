@@ -1,0 +1,71 @@
+.students{
+    background-color: 255,255, 150;
+    box-shadow: 0 2rem 5rem 1rem rgba(red, green, blue, alpha);
+    font-size: 1.8rem;
+    width: 28rem;
+    border-radius: 0.7rem;
+    margin: 0 0.5rem;
+    /* overflow: hidden; */
+}
+.neighbour::before{
+    content: "neighbour student";
+    width: 100%;
+    position: absolute;
+    top: 4rem;
+}
+body
+{
+    margin: 0;
+    padding: 0;
+    background-color: #6abadeba;
+    font-family: 'Arial';
+}
+.login{
+    width: 382px;
+    overflow: hidden;
+    margin: auto;
+    margin: 20 0 0 450px;
+    padding: 80px;
+    background: #23463f;
+}
+
+h2{
+    text-align: center;
+    color: #277582;
+    padding: 20px;
+}
+label{
+    color: #08ffd1;
+    font-size: 17px;
+}
+
+#UserName{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+#Password{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+#log{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 17px;
+    padding-left: 7px;
+    color: blue;
+}
+span{
+    color: white;
+    font-size: 17px;
+}
+a{
+    float: left;
+    background-color: grey;
+}

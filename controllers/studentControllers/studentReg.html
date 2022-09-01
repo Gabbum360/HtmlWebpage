@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+<!-- the right form for registration -->
+    <form id="jesus" class="registerForm" name="registrationForm" action="http://localhost:37282/api/Authenticate/register" method="post" autocomplete="off" enctype="multipart/form-data" target="_blank">
+        <fieldset>
+            <legend>Sign-up Form</legend>
+            <p>
+                <label for="username">Username</label>
+                <input id="u1" name="username" type="text" autofocus autocomplete="on" placeholder="Your Username" value="john">
+            </p>
+            <p>
+                <label for="email">Email</label>
+            <input id="e1" name="email" type="email" ofocus autocomplete="off" placeholder="Your Email">
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input id="p1" name="password" type="password" autocomplete="off">
+            </p>
+            <!-- <button type="submit" id="submit" name="submit"> SubmitForm</Form></button> -->
+            <input type="submit" value="Create" onclick="create_account()"/>
+                                <!-- incase you do need to add confirm password to the form... -->
+            <!-- <p>
+                <label for="confirm_password">Confirm Password</label>
+                <input id="confirm_password" name="confirm_password" type="password" autocomplete="off">
+            </p> -->
+            
+        </fieldset>
+
+    </form>
+    <!-- script starts here -->
+    <head renat="server">
+        <!-- https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js -->
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/signupForm.js"></script>
+        <!-- <script src="js/jquery.validate.js"></script> -->
+        <script>
+            function create_account(){
+                var url ="http://localhost:37282/api/Authenticate/register"
+                var myDataInputs ={};
+                myDataInputs.Username = $('#u1').val();
+                myDataInputs.Email = $('#e1').val();
+                myDataInputs.Password = $('#p1').val();
+                if(myDataInputs){
+                    $.ajax({
+                        url: url,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(myDataInputs),
+                        type: "Post",
+                        success:function(result){
+                            alert(result);
+                        },
+                        error:function(msg){
+                            alert("error in operation");
+                        }
+                    });
+                }
+                // var u = document.getElementById("u1").value;
+                // var e = document.getElementById("e1").value;
+                // var p = document.getElementById("p1").value;
+            }
+      
+    
+                                        //first try method...
+                                //         $(".registerForm").submit(function(event) {
+                                //       event.preventDefault();
+                                //       function create_account(){
+                                //         document.getElementsByClassName("myData")
+                                //       }
+                                //       var myData = {
+                                //          u : document.getElementById("u1").value,
+                                //          email: $('input[name="e1"]').serialize(),
+                                //         password: $('input[name="p1"]').serialize()
+                                //       }
+                                //       $.post( "http://localhost:37282/api/Authenticate/register", $( "#jesus" ).serialize() );
+                                
+                                
+                                //     var url = ( 'http://localhost:37282/api/Authenticate/register' );
+                                
+                                //       $.ajax({
+                                //         url: url,
+                                //         type:"POST",
+                                //         data: myData,
+                                //         dataType: "JSON",
+                                //         success:function(myData, textStatus ){
+                                //             console.log(data.myData)
+                                //         },
+                                //         error: function(xhr, textStatus,errorThrown){
+                                //                             console.log('Error in Operation');
+                                //                         }
+                                //       })
+                                //     })
+                                
+                                //     // <script type="text/javascript">
+                                
+                                // $(document).ready(function () {
+                                //     $('.click-item').click(function () {
+                                //         $.ajax({
+                                //             url: 'UpdateServer.asmx/ProcessItem',
+                                //             type: 'post',
+                                //             contentType: 'application/json',
+                                //             data: '{"itemId":' + $(this).text() + '}',
+                                //             success: function (result) {
+                                //                 alert(result.d.Message);
+                                //             }
+                                //         });
+                                //     });
+                                // });
+                                
+        </script>
+    
+    <!-- //     // Attach a submit handler to the form
+    // $( "#jesus" ).submit(function( event ) {
+     
+    //  // Stop form from submitting normally
+    //  event.preventDefault();
+    
+    //  // Get some values from elements on the page:
+    //  var $form = $( this ),
+    //    term = $form.( "input[name='s']" ).val(),
+    //    url = $form.attr( "action" );
+    
+    //  // Send the data using post
+    //  var posting = $.post( url, { s: term } ); -->
+    
+    <!-- // })
+        //         // second try method...
+        // var myData = document.getElementById('myForm');
+        // var myForm = document.addEventListener(submit,function(e){
+        //     e.preventDefault();
+        //     console.log(data)
+        // })
+          
+    
+       
+    
+    //         $('#clickNow').click(allStudents);
+    // //shorthand way to get data from the server using GET()
+    //         function allStudents(){
+    // //declare a local variable of url so we dont keep repeating the same url in the functions..
+    //             var url = 'http://localhost:37282/api/controllers/get-all-students'
+    //             $.get(url, output)
+    //         } -->
+    
+    <!-- 
+    //         function output(data){
+    //             console.log(data)
+    // //to manage how the return valu displays, each() will iterate through
+    // //each itme and give it a Key and Value display.
+    //             $.each(data, function(k,v){
+    //                 console.log(k)
+    //                 console.log(v)
+                  
+    //             })
+    //             $('#output').html('...')//to select just few details from the data requested.
+    //         } -->
+    
+    </head>
+    <!-- student registration form -->
+    <!-- <article id="login">
+        <h2>Student Details </h2>
+        <p>Please input your <strong>
+            registered
+        </strong> details</p>
+        <form action="https://" method="post">
+            <p>
+                 <label for="firstName" >First Name</label>
+                <input type="text" name="firstName"
+                id="firstName" placeholder="Jane"
+                autocomplete="on" required autofocus>
+            </p>
+            <p>
+                <label for="lastName">Last Name</label>
+                 <input type="text" name="lastName"
+                 id="lastName" placeholder="Drey"
+                 autocomplete="on" required autofocus>
+            </p>
+            <p>
+                <label for="password">Password</label>
+                 <input type="password" name="password"
+                 id="lastName" placeholder="Secret Password"
+                 required>
+            </p>
+            <br>
+            <p>
+                <input type="arrow" value="Login">
+            </p>
+        </form>
+    </article> -->
+    <!-- <hr>
+    <article id="Register">
+             <h2>Student Details </h2>
+             <p>Please input your <strong>
+               registered
+              </strong> details</p>
+        <form action="https://" method="post">
+            <fieldset>
+             <p>
+                 <label for="firstName">First Name</label>
+                <input type="text" name="firstName"
+                id="firstName" placeholder="Jane"
+                autocomplete="on" required autofocus>
+             </p>
+             <p>
+                <label for="lastName">Last Name</label>
+                 <input type="text" name="lastName"
+                 id="lastName" placeholder="Drey"
+                 autocomplete="on" required autofocus>
+                </p>
+             <p>
+                <label for="sex">Sex</label>
+                <select name="sex" id="sex"> <option value="male">Male</option>
+                    <option value="female">Female</option></select>
+             </p>
+             <p>
+                <label for="age">Age</label>
+                 <input type="age" name="age"
+                 id="age" placeholder=" "
+                  autofocus autocomplete="on" required>
+                </p>
+                <p>
+                <label for="student_number">Student No </label>
+                 <input type="student_number" name="student_number"
+                 id="student_number" placeholder="00000"
+                  autofocus autocomplete="on" required>
+             </p>
+             <p>
+                <label for="classArmId">ClassArm Id</label>
+                 <input type="classArmId" name="classArmId"
+                 id="classArmId" placeholder="0000"
+                  autofocus autocomplete="on" required>
+             </p>
+                 <p>
+                <label for="country">Country</label>
+                <select name="country" id="country">
+                    <option value="nigeria">Nigeria</option>
+                     <option value="canada" selected>Canada</option>
+                    <option value="brazil">Brazil</option>
+                    <option value="germany">Germany</option></select>
+                    <option value="france">France</option></select>
+                    <option value="italy">Italy</option></select> -->
+                <!--      <option value="australia">Australia</option></select>
+                     <option value="benin">Benin</option></select>
+                    <option value="costa rica">Costa Rica</option></select>
+                    <option value="japan">Japan</option></select>
+                    <option value="usa">USA</option> -->
+                 </select>
+                </p>
+             <!--<p>
+                 <label for="country"> Country</label>
+                    <input step="15" type="text" name="country"
+                    id="country" list="country-list">
+                <datalist id="country-list">
+                    <option value="Nigeria">
+                    <option value="Canada">
+                    <option value="Germany">
+                    <option value="USA">
+                    <option value="Benin">
+                    <option value="Costa Rica">
+                    <option value="France">
+                    <option value="Japan">
+                    <option value="Australia">
+                    <option value="Brazil">
+                    <option value="Italy">
+                </datalist>-->
+            </fieldset>
+        </form>
+    </article>
+    <!-- <article>
+        <form action="http://" method="post">
+                <h2 tabindex="2"> Auto-Biography</h2>
+                <p>Please fill where required</p>
+                <p>
+                    <Label for="stateOfOrigin"> State Of Origin</Label>
+                    <input type="text" name="stateOfOrigin"
+                    id="stateOfOrigin"
+                    list="state-of-Origin" autocomplete="on" autofocus
+                    required>
+                    <datalist id="state-of-Origin">
+                    <option value="Benue State"></option>
+                    <option value="Ogun State"></option>
+                    <option value="Imo State"></option>
+                </p>
+                <p>
+                    <Label for="religion"> Religion</Label>
+                    <select name="religion" id="religion">
+                    <option value="christiaity">Christiaity</option><option value="muslim">Muslim</option>
+                    <option value="islamic">Islamic</option>
+                    <p><input type="button" value="Summit"></p>  
+                </p>
+            </hr>
+        </form>
+</article> -->
+
+</body>
+</html>

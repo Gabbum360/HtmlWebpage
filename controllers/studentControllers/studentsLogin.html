@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Portal</title>
+    <!-- <link rel="stylesheet" href="main.css" type="text/css"> -->
+    <link rel="stylesheet"  type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+
+</head>
+<body>
+    <h2>Login Page</h2><br>
+    <div class="login">
+        <form id="login" method="get" action="login.ajax">
+            <label> <b>UserName
+            </b>
+            </label>
+            <input type="text" name="userName" id="userName" placeholder="UserName">
+            <br><br>
+            <label><br> Password
+            </br>
+            </label>
+            <input type="Password" name="password" id="password" placeholder="Password">
+            <br><br>
+            <input type="button" name="login" id="login" value="Login here">
+            <br><br>
+            <input type="checkbox" id="check">
+            <span>Remember Me</span>
+            <br><br>
+            <a href="#">Forgot Password</a>
+        </form>
+
+    </div>
+    <hr>
+    <article id="login">
+        <h2>Student Details </h2>
+        <p>Please input your <strong>
+            registered
+        </strong> details</p>
+        <form action="https://" method="post">
+            <p>
+                 <label for="firstName" >First Name</label>
+                <input type="text" name="firstName"
+                id="firstName" placeholder="Jane"
+                autocomplete="on" required autofocus>
+            </p>
+            <p>
+                <label for="lastName">Last Name</label>
+                 <input type="text" name="lastName"
+                 id="lastName" placeholder="Drey"
+                 autocomplete="on" required autofocus>
+            </p>
+            <p>
+                <label for="password">Password</label>
+                 <input type="password" name="password"
+                 id="lastName" placeholder="Secret Password"
+                 required>
+            </p>
+            <br>
+            <p>
+                <input type="button" value="Login">
+            </p>
+        </form>
+    </article>
+    <hr>
+</body>
+</html>

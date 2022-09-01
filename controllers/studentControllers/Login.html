@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <link rel="stylesheet" href="controllers/studentControllers/allStudents.html">
+    
+    <title>Login <Form></Form></title>
+</head>
+
+<body>
+    <form id="christ" class="userLoginForm" name="loginForm" action="http://localhost:37282/api/Authenticate/loginUser" method="post" autocomplete="off" enctype="multipart/form-data" target="_blank">
+        <fieldset>
+            <legend>User Login Form</legend>
+            <p>
+                <label for="username">Username</label>
+                <input id="u1" name="username" type="text" autofocus autocomplete="on" placeholder="Your Username" value="john">
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input id="p1" name="password" type="password" autocomplete="off">
+            </p>
+            <!-- <button type="submit" id="submit" name="submit"> SubmitForm</Form></button> -->
+            <input id="btn" type="submit" value="Log in" onclick="loginNow()"/>
+                                <!-- incase you do need to add confirm password to the form... -->
+            <!-- <p>
+                <label for="confirm_password">Confirm Password</label>
+                <input id="confirm_password" name="confirm_password" type="password" autocomplete="off">
+            </p> -->
+            
+        </fieldset>
+
+    </form>
+
+    <head renat="server">
+                    
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+       <script>
+           $(document).ready(function(){
+               $("#btn").click(function(){
+                   var url ="http://localhost:37282/api/Authenticate/loginUser"
+                   var userDetails = {};
+                   userDetails.Username = $('#u1').val();
+                   userDetails.Password = $('#p1').val();
+                $.ajax({
+                       url: url,
+                       contentType: "application/json; charset=utf-8",
+                       data: JSON.stringify(userDetails),
+                       type: "Post",
+                       success:function(result){
+                           alert("user login successful");
+                           if(status.success){
+                            location.href ="controllers/studentControllers/allStudents.html"
+                           }
+                       },
+                       error:function(msg){
+                           alert("error in operation");
+                       }
+                   });
+               });
+           });
+       </script>
+       <!-- A login form is normally used to prevent unauthorized users from accessing informations or actions that should be accessible/allowed only to specific people. So, in order for a login form to do it's job properly, it MUST be secure (as much as possible, at least). If a login form is not secure, it may give the illusion of protecting your data, but skilled people will be able to bypass it without you even knowing it... and this is BAD!
+
+       Now, this is the problem I see with a jQuery only login form. The fact that you have the password in plain text in your page code, is just BAD! It is super easy to bypass it! Everyone who will give a look at your page code, will know your admin password. Even if you use good hash algorithms (such as SHA-2) to "hide" the password, it would be almost as bad, since it would give a possible attacker a good hint where to start from to guess your password (using rainbow tables or brute force).
+       
+       So, my suggestion is to use a server-side application along with your jQuery script, that may be called through jQuery to check the password and then allow the user in. It is not yet the very best solution (it would be much better to send a password on an https connection), but it is still an improvement!
+       
+       Your code, in order to do that, should be something like this:
+       
+           $(document).ready(function(){
+           // on click Sign In Button checks with the remote server that username =='admin' and password == 'password'
+               $("#login").click(function(){
+                   $.ajax({
+                       url: 'http://www.mywebsite.com/checklogin?user='+encodeURIComponent($("#loginusername").val())+'&pass='+encodeURIComponent($("#loginpassword").val()),
+                       success:function(data){
+                           if(data == "OK")
+                           {
+                               $("#first").hide();
+                               $("#second").append("<p>Hello, admin</p> <br/><input type='button' id='logout' value='Log Out' />");
+                           }
+                           else
+                           {
+                               alert("Please try again");
+                           }
+                       }
+                   });
+               });
+       
+               $("#logout").click(function() {
+                   $("form")[0].reset();
+                   $("#first").show();
+                   $("#second").hide();
+               });
+           }); -->
+   </head>
+</body>
+</html>

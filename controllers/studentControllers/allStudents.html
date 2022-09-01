@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="main.css" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <head renat="server">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>
+                    //for javaScript...
+                    //method for GetStudent Endpoint...
+            $(document).ready(function(){
+                $("#getAllStudents").click(function (){
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost:37282/api/controllers/get-all-students',
+                        xhrFields:{
+                            withCredentials: true,
+                        },
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data, textStatus, xhr){
+                            console.log(data);
+                        },
+                        error: function(xhr, textStatus,errorThrown){
+                            console.log('Error in Operation');
+                        }
+                    });
+                });
+            });
+
+//             another way to call the API using GET() in the script.
+//             this does not require codes from the script.js file.
+//         $('#clickNow').click(allStudents);
+// //shorthand way to get data from the server using GET()
+//         function allStudents(){
+// //declare a local variable of url so we dont keep repeating the same url in the functions..
+//             var url = 'http://localhost:37282/api/controllers/get-all-students'
+//             $.get(url, output)
+//         }
+
+//         function output(data){
+//             console.log(data)
+//             $('#output').html('...')//to select just few details from the data requested.
+//         }
+        </script>
+    </head>
+    <body>
+        <input type="button" id="getAllStudents" value="List Of Students">
+    </body>
+</head>
+<!-- <div class="students">
+    < the following is been used in "script.js" function to get the data from the server -->
+    <!-- <article class="student">
+        <div class="student_data">
+            <h3 class="student_name"> Student</h3>
+            <h4 class="student_surname"> Surname</h4>
+            <p class="student_row">Age</p>
+            <p class="student_row">Sex</p>
+            <p class="student_row">ClassArm</p>
+            <p class="student_row">Id</p>
+            <p class="student_row">StudetNo</p>
+            <p class="student_row">Country</p>
+        </div>
+    </article> -->
+<!-- </div> -->
+    <!-- <table>
+        <caption>List of Students</caption>
+        <thead> Class1</thead>
+        <tr>
+            <th scope="col">FirstName</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Age</th>
+            <th scope="col">Sex</th>
+            <th scope="col">StudentNo</th>
+            <th scope="col">Country</th>
+        </tr>
+        <tr>
+            <th id="name" scope="row"> Oluwafunmilayo</th>
+            <td>Fadolamu</td>
+            <td>25</td>
+            <td>Female</td>
+            <td>001</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <th id="name" scope="row"> Clement</th>
+            <td>Ochayi</td>
+            <td>23</td>
+            <td>Male</td>
+            <td>002</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <th id="name" scope="row"> John</th>
+            <td>Samson</td>
+            <td>17</td>
+            <td>Male</td>
+            <td>003</td>
+            <td>Italy</td>
+        </tr>
+        <thead2 id="half"> Class2</thead>>
+        <tr>
+            <th id="name" scope="col">FirstName</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Age</th>
+            <th scope="col">Sex</th>
+            <th scope="col">StudentNo</th>
+            <th scope="col">Country</th>
+        </tr>
+        <tr>
+            <th id="name" scope="row"> Isaiah</th>
+            <td>Dominic</td>
+            <td>27</td>
+            <td>Male</td>
+            <td>004</td>
+            <td>Nigeria</td>
+        </tr>
+        <tr>
+            <th id="name" scope="row"> Micheal</th>
+            <td>Elijah</td>
+            <td>25</td>
+            <td>Male</td>
+            <td>005</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <th id="name" scope="row"> Emmanuel</th>
+            <td>Ehem</td>
+            <td>28</td>
+            <td>Male</td>
+            <td>006</td>
+            <td>Ghana</td>
+        </tr>
+        <a href="HomePage.html" target="_blank">HomePage</a>
+        <a href="info"></a>
+    </table>  -->
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+    <meta name="author" content="Gabbum">
+    <meta name="Description" content="This page contains all the things i am learning how to create as i learn HTML.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Web page</title>
+    <link rel="icon" href="images/html5.png" type="image/x-icon">
+    <link rel="stylesheet" href="main.css" type="text/css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+    <!-- <link rel="stylesheet" href="Students.html"> -->
+    <!-- <link rel="stylesheet" href="http://localhost:37282/api/controllers/get-all-students"> -->
+    <!-- <link rel="stylesheet" href="http://localhost:37282/api/Authenticate/loginUser"> -->
+    <link rel="stylesheet" href="http://127.0.0.1:5500">
+    <link rel="stylesheet" href="signupForm.js">
+
+    <!-- //get student method was here before -->
+    
+<body>
+    <a href="HomePage.html">redirect to Home_Page</a>
+
+    <form id="christ" class="userLoginForm" name="loginForm" action="http://localhost:37282/api/Authenticate/register" method="get" autocomplete="off" enctype="multipart/form-data" target="_blank">
+        <fieldset>
+            <legend>User Login Form</legend>
+            <p>
+                <label for="username">Username</label>
+                <input id="u1" name="username" type="text" autofocus autocomplete="on" placeholder="Your Username" value="john">
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input id="p1" name="password" type="password" autocomplete="off">
+            </p>
+            <!-- <button type="submit" id="submit" name="submit"> SubmitForm</Form></button> -->
+            <input id="btn" type="submit" value="Log in" onclick="loginNow()"/>
+                                <!-- incase you do need to add confirm password to the form... -->
+            <!-- <p>
+                <label for="confirm_password">Confirm Password</label>
+                <input id="confirm_password" name="confirm_password" type="password" autocomplete="off">
+            </p> -->
+            
+        </fieldset>
+
+    </form>
+
+                <head renat="server">
+                     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+                    <script>
+                                //for javaScript...
+                                //method for GetStudent Endpoint...
+                        $(document).ready(function(){
+                            $("#btn").click(function(){
+                                var url ="http://localhost:37282/api/Authenticate/loginUser"
+                                var userDetails = {};
+                                userDetails.Username = $('#u1').val();
+                                userDetails.Password = $('#p1').val();
+                             $.ajax({
+                                    url: url,
+                                    contentType: "application/json; charset=utf-8",
+                                    data: JSON.stringify(myDataInputs),
+                                    type: "Get",
+                                    success:function(result){
+                                        alert("user login successful");
+                                    },
+                                    error:function(msg){
+                                        alert("error in operation");
+                                    }
+                                });
+                            });
+                        });
+                        
+            
+                        // another way to call the API using GET() in the script.
+            //             this does not require codes from the script.js file.
+            //         $('#clickNow').click(allStudents);
+            // //shorthand way to get data from the server using GET()
+            //         function allStudents(){
+            // //declare a local variable of url so we dont keep repeating the same url in the functions..
+            //             var url = 'http://localhost:37282/api/controllers/get-all-students'
+            //             $.get(url, output)
+            //         }
+            
+            //         function output(data){
+            //             console.log(data)
+            //             $('#output').html('...')//to select just few details from the data requested.
+            //         } -->
+                    </script>
+
+                </head>
+        
+</body>
+        
+
+</html>
