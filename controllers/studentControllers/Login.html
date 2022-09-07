@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <form id="christ" class="userLoginForm" name="loginForm" action="http://localhost:37282/api/Authenticate/loginUser" method="post" autocomplete="off" enctype="multipart/form-data" target="_blank">
+    <form id="christ" class="userLoginForm" name="loginForm" action="http://localhost:5000/api/Authenticate/loginUser" method="post" autocomplete="off" enctype="multipart/form-data" target="_blank">
         <fieldset>
             <legend>User Login Form</legend>
             <p>
@@ -42,7 +42,7 @@
        <script>
            $(document).ready(function(){
                $("#btn").click(function(){
-                   var url ="http://localhost:37282/api/Authenticate/loginUser"
+                   var url ="http://localhost:5000/api/Authenticate/loginUser"
                    var userDetails = {};
                    userDetails.Username = $('#u1').val();
                    userDetails.Password = $('#p1').val();

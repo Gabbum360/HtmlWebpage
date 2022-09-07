@@ -23,7 +23,7 @@
 <body>
     <a href="HomePage.html">redirect to Home_Page</a>
 
-    <form id="christ" class="userLoginForm" name="loginForm" action="http://localhost:37282/api/Authenticate/register" method="get" autocomplete="off" enctype="multipart/form-data" target="_blank">
+    <!-- <form id="christ" class="userLoginForm" name="loginForm" action="http://localhost:37282/api/Authenticate/register" method="get" autocomplete="off" enctype="multipart/form-data" target="_blank">
         <fieldset>
             <legend>User Login Form</legend>
             <p>
@@ -42,7 +42,32 @@
                 <input id="confirm_password" name="confirm_password" type="password" autocomplete="off">
             </p> -->
             
-        </fieldset>
+        </fieldset> -->
+
+        <form id="chng" class="changePwd" name="changePw" action="http://localhost:5000/api/Authenticate/change-password" method="post" autocomplete="off" enctype="multipart/form-data" target="_blank">
+            <legend>Change Password</legend>s
+            <p>
+                <label for="username">Username</label>
+                <input id="un1" name="username" type="text" autofocus autocomplete="on" placeholder="Your Username" value="john">
+            </p>
+            <p>
+                <label for="password">Current Password</label>
+                <input id="cp1" name="password" type="password" autocomplete="off">
+            </p>
+            <div>
+                <p>
+                    <label for="password">New Password</label>
+                    <input id="np1" name="password" type="password" autocomplete="off">
+                </p>
+            </div>
+            <!-- <button type="submit" id="submit" name="submit"> SubmitForm</Form></button> -->
+            <input id="see" type="submit" value="Change Password" onclick="changePassword()"/>
+                                <!-- incase you do need to add confirm password to the form... -->
+            <!-- <p>
+                <label for="confirm_password">Confirm Password</label>
+                <input id="confirm_password" name="confirm_password" type="password" autocomplete="off">
+            </p> -->
+        </form>
 
     </form>
 
@@ -50,27 +75,52 @@
                      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
                     <script>
                                 //for javaScript...
-                                //method for GetStudent Endpoint...
-                        $(document).ready(function(){
-                            $("#btn").click(function(){
-                                var url ="http://localhost:37282/api/Authenticate/loginUser"
-                                var userDetails = {};
-                                userDetails.Username = $('#u1').val();
-                                userDetails.Password = $('#p1').val();
-                             $.ajax({
+                                
+                        // $(document).ready(function(){
+                        //     $("#see").click(function(){
+                        //         var url ="http://localhost:5000/api/Authenticate/change-password"
+                        //         var changeDetails = {};
+                        //            changeDetails.username = $('#un1').val();
+                        //         changeDetails.currentPassword = $('#cp1').val();
+                        //         changeDetails.NewPassword = $('#np1').val();
+                        //      $.ajax({
+                        //             url: url,
+                        //             contentType: "application/json; charset=utf-8",
+                        //             data: JSON.stringify(changeDetails),
+                        //             type: "Post",
+                        //             success:function(result){
+                        //                 alert("user login successful");
+                        //             },
+                        //             error:function(msg){
+                        //                 alert("error in operation");
+                        //             }
+                        //         });
+                        //     });
+                        // });
+
+                        function changePassword(){
+                            var url = "http://localhost:5000/api/Authenticate/change-password"
+                            var changeDetails = {};
+                            changeDetails.username = $('#un1').val();
+                            changeDetails.currentPassword = $('#cp1').val();
+                            changeDetails.newPassword = $('#np1').val();
+                            if(changeDetails){
+                                $.ajax({
                                     url: url,
                                     contentType: "application/json; charset=utf-8",
-                                    data: JSON.stringify(myDataInputs),
-                                    type: "Get",
+                                    data: JSON.stringify(changeDetails),
+                                    type: "Post",
                                     success:function(result){
-                                        alert("user login successful");
+                                        console.log("password changed successfully. proceed with the new credentials")
+                                        alert(result);
+                                        location.href = "HomePage.html"
                                     },
                                     error:function(msg){
                                         alert("error in operation");
                                     }
                                 });
-                            });
-                        });
+                            }
+                        }
                         
             
                         // another way to call the API using GET() in the script.
