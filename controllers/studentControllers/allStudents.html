@@ -21,14 +21,14 @@
                 $("#getAllStudents").click(function (){
                     $.ajax({
                         type: 'GET',
-                        url: 'http://localhost:5000/api/controllers/get-all-students',
+                        url: 'http://localhost:37282/api/controllers/get-all-students',
                         xhrFields:{
                             withCredentials: true,
                         },
                         type: 'GET',
                         dataType: 'json',
                         success: function(data, textStatus, xhr){
-                            console.log(data);
+                            console.log(data.data[0]);
                         },
                         error: function(xhr, textStatus,errorThrown){
                             console.log('Error in Operation');

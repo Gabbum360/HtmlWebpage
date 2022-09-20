@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Student Record</title>
+</head>
+<body>
+    <form id="chng" class="changePwd" name="changePw" action="http://localhost:37282/api/controllers/update-studentRecord/{id}" method="post" autocomplete="off" enctype="multipart/form-data" target="_blank">
+        <legend>Change Password</legend>s
+        <p>
+            <label for="classArmId">ClassArmId</label>
+            <input id="cl1" name="username" type="text" autofocus autocomplete="on" placeholder="Your Username">
+        </p>
+        <p>
+            <label for="country ">Country</label>
+            <input id="c1" name="password" type="password" autocomplete="off">
+        </p>
+        <!-- <div>
+            <p>
+                <label for="password">New Password</label>
+                <input id="np1" name="password" type="password" autocomplete="off">
+            </p>
+        </div> -->
+        <!-- <button type="submit" id="submit" name="submit"> SubmitForm</Form></button> -->
+        <input id="see" type="submit" value="Change Password" onclick="changePassword()"/>
+                            <!-- incase you do need to add confirm password to the form... -->
+        <!-- <p>
+            <label for="confirm_password">Confirm Password</label>
+            <input id="confirm_password" name="confirm_password" type="password" autocomplete="off">
+        </p> -->
+    </form>
+
+    <script>
+        function changePassword(){
+            var url = "http://localhost:37282/api/controllers/update-studentRecord/{id}"
+            var inputData ={};
+            inputData.Country = $("#cl1").val();
+            inputData.ClassArmId = $("#cl1");
+            if(inputData){
+                $.ajax({
+                    url : url,
+                    data : JSON.stringify(inputData),
+                    type : "Post",
+                    contentType : "application/json; charset=utf-8",
+                    success : function(result) {
+                        console.log("successful")
+                    },
+                    error : function(result){
+                        console.log("error occured!!! please check the data");
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

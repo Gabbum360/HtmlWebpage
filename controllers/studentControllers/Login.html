@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <div>
+        <li>
+            <a href="/controllers/studentControllers/UpdateRecord.html"> Update Student Profile</a>
+        </li>
+    </div>
+    
     <form id="christ" class="userLoginForm" name="loginForm" action="http://localhost:5000/api/Authenticate/loginUser" method="post" autocomplete="off" enctype="multipart/form-data" target="_blank">
         <fieldset>
             <legend>User Login Form</legend>
@@ -25,7 +31,11 @@
                 <input id="p1" name="password" type="password" autocomplete="off">
             </p>
             <!-- <button type="submit" id="submit" name="submit"> SubmitForm</Form></button> -->
-            <input id="btn" type="submit" value="Log in" onclick="loginNow()"/>
+            <div>
+                <input id="btn" type="submit" value="Log in" onclick="loginNow()"/>
+                <a href="controllers/studentControllers/changePassword.html" target="_blank">Change Password</a>
+            </div>
+            
                                 <!-- incase you do need to add confirm password to the form... -->
             <!-- <p>
                 <label for="confirm_password">Confirm Password</label>

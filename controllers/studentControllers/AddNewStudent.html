@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Students Page</title>
+</head>
+<body>
+    
+    <form id="jesus" class="registerForm" name="registrationForm" action="http://localhost:37282/api/controllers/register-new-Std" method="post" autocomplete="off" enctype="multipart/form-data" target="_blank">
+        <fieldset>
+            <legend>Sign-up Form</legend>
+            <p>
+                <label for="id">Id</label>
+                <input id="i1" name="id" type="text" autofocus autocomplete="on" placeholder="User Id">
+            </p>
+            <p>
+                <label for="surname">Surname</label>
+                <input id="s1" name="surname" type="text" autofocus autocomplete="on" placeholder="Your surname">
+            </p>
+            <p>
+                <label for="firstname">Firstname</label>
+                <input id="f1" name="Firstname" type="text" autofocus autocomplete="on" placeholder="Your Firstname">
+            </p>
+            <p>
+                <label for="age">Age</label>
+                <input id="a1" name="age" type="text" autofocus autocomplete="on" placeholder="age">
+            </p>
+            <p>
+                <label for="classArmId">ClassArmId</label>
+            <input id="c1" name="classArmId" type="classArmId" autofocus autocomplete="off" placeholder="classArmId">
+            </p>
+            <p>
+                <label for="studentNo">StudentNo</label>
+            <input id="st1" name="studentNo" type="studentNo" autofocus autocomplete="off" placeholder="Your studentNo">
+            </p>
+            <p>
+                <label for="sex">Sex</label>
+            <input id="se1" name="sex" type="sex" autofocus autocomplete="off" placeholder="Sex">
+            </p>
+            <p>
+                <label for="country">Country</label>
+            <input id="co1" name="country" type="country" autofocus autocomplete="off" placeholder="country">
+            </p>
+            <!-- <button type="submit" id="submit" name="submit"> SubmitForm</Form></button> -->
+            <input type="submit" value="Create" onclick="register()"/>
+                                <!-- incase you do need to add confirm password to the form... -->
+            <!-- <p>
+                <label for="confirm_password">Confirm Password</label>
+                <input id="confirm_password" name="confirm_password" type="password" autocomplete="off">
+            </p> -->
+        </fieldset>
+    </form>
+    
+    <head renat="server">
+        <!-- https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js -->
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- <script src="js/jquery.validate.js"></script> -->
+        <script>
+            function register(){
+                var url ="http://localhost:37282/api/controllers/register-new-Std"
+                var myDataInputs ={};
+                myDataInputs.Id = $('#i1').val();
+                myDataInputs.Surname = $('#s1').val();
+                myDataInputs.Firstname = $('#f1').val();
+                myDataInputs.Age = $('#a1').val();
+                myDataInputs.ClassArmId = $('#c1').val();
+                myDataInputs.StudentNo = $('#st1').val();
+                myDataInputs.Sex = $('#se1').val();
+                myDataInputs.Country = $('#co1').val();
+                if(myDataInputs){
+                    $.ajax({
+                        url: url,
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify(myDataInputs),
+                        type: "Post",
+                        success:function(result){
+                            alert(result.myDataInputs);
+                        },
+                        // error:function(msg){
+                        //     alert("error in operation");
+                        // }
+                    });
+                }
+                // var u = document.getElementById("u1").value;
+                // var e = document.getElementById("e1").value;
+                // var p = document.getElementById("p1").value;
+            }                   
+        </script>
+        <legend>
+            <div>
+                <li>
+                    <a href="/controllers/studentControllers/Login.html">Login instead</a>
+                </li>
+                <li>
+                    <a href="/HomePage.html">Go to Home</a>
+                    <a href="/index.html">index.html</a>
+                </li>
+            </div>
+        </legend>
+        
+        
+</body>
+</html>
